@@ -16,52 +16,75 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val user= hashMapOf("first" to "Apurva",
-        "last" to "Shukla",
-        "dob" to "2001")
+        val username="apurvaone"
 
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+        val user= hashMapOf(
+            "first" to "Apoorv",
+            "last" to "Shukla",
+            "dob" to "24/01/2000"
+        )
+
+        val userRef= db.collection("users").document(username)
+
+        userRef.set(user)
+
+        userRef
+            .set(user)
+            .addOnSuccessListener {
+                Log.d("udata added", "DocumentSnapshot added")
 
             }
             .addOnFailureListener {
-                Log.w(TAG, "Error adding document", it)
-
-            }
-
-        // Create a new user with a first, middle, and last name
-        val user2 = hashMapOf(
-            "first" to "Alan",
-            "middle" to "Mathison",
-            "last" to "Turing",
-            "born" to 1912
-        )
-
-// Add a new document with a generated ID
-        db.collection("users")
-            .add(user2)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w("udata addition failed","Error",it)
             }
 
 
-        db.collection("users")
-            .get()
-            .addOnSuccessListener { result->
-                for( document in result)
-                {
-                    Log.d("Getdata", "${document.id} => ${document.data}")
-
-                }
-            }
-            .addOnFailureListener{
-                Log.w(TAG,"Error getting documents")
-            }
+//        val user= hashMapOf("first" to "Apurva",
+//        "last" to "Shukla",
+//        "dob" to "2001")
+//
+//        db.collection("users")
+//            .add(user)
+//            .addOnSuccessListener { documentReference->
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//
+//            }
+//            .addOnFailureListener {
+//                Log.w(TAG, "Error adding document", it)
+//
+//            }
+//
+//        // Create a new user with a first, middle, and last name
+//        val user2 = hashMapOf(
+//            "first" to "Alan",
+//            "middle" to "Mathison",
+//            "last" to "Turing",
+//            "born" to 1912
+//        )
+//
+//// Add a new document with a generated ID
+//        db.collection("users")
+//            .add(user2)
+//            .addOnSuccessListener { documentReference ->
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//            }
+//            .addOnFailureListener { e ->
+//                Log.w(TAG, "Error adding document", e)
+//            }
+//
+//
+//        db.collection("users")
+//            .get()
+//            .addOnSuccessListener { result->
+//                for( document in result)
+//                {
+//                    Log.d("Getdata", "${document.id} => ${document.data}")
+//
+//                }
+//            }
+//            .addOnFailureListener{
+//                Log.w(TAG,"Error getting documents")
+//            }
             }
 
     }
