@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "856777270233",
+    "project_id": "firestoredoc",
+    "storage_bucket": "firestoredoc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856777270233:android:fb1498538b124645702fc8",
+        "android_client_info": {
+          "package_name": "com.example.firestoredoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856777270233-bjekoilm8eu6tqc8j0h6v087tiv7m4pr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArH93irfgNKWwz2KZqBBQ9yQGLoa2kyos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856777270233-bjekoilm8eu6tqc8j0h6v087tiv7m4pr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
