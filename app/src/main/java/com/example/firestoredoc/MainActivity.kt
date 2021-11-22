@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -48,5 +49,19 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "Error adding document", e)
             }
 
+
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result->
+                for( document in result)
+                {
+                    Log.d("Getdata", "${document.id} => ${document.data}")
+
+                }
+            }
+            .addOnFailureListener{
+                Log.w(TAG,"Error getting documents")
+            }
+            }
+
     }
-}
