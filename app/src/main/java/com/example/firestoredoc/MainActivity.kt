@@ -39,6 +39,21 @@ class MainActivity : AppCompatActivity() {
             }
 
 
+        val meesageRef1= db
+            .collection("rooms")
+            .document("roomC")
+            .collection("messages")
+            .document("message1")
+
+        val msg1= hashMapOf(
+            "from" to "bhushan",
+            "msg" to "ye wala form bhara kya yaar kisine"
+
+        )
+
+        meesageRef1.set(msg1)
+
+
 //        val user= hashMapOf("first" to "Apurva",
 //        "last" to "Shukla",
 //        "dob" to "2001")
