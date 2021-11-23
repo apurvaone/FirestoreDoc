@@ -19,11 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         val washingtonRef = db.collection("cities").document("BPL")
 
+        washingtonRef.update("population",FieldValue.increment(199999))
+
+/*
 // Atomically add a new region to the "regions" array field.
         washingtonRef.update("regions", FieldValue.arrayUnion("greater_bhawarkuan"))
 
 // Atomically remove a region from the "regions" array field.
-        washingtonRef.update("regions", FieldValue.arrayRemove("MP nagar"))
+        washingtonRef.update("regions", FieldValue.arrayRemove("MP nagar"))*/
 
 
        /* db.collection("users").document("apurvaone").update(
