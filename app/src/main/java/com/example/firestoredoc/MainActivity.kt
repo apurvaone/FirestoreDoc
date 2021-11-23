@@ -16,10 +16,21 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val city= City("Bhopal","MP","India",true,
-        500000, listOf("MP nagar","Avadhpuri"))
+        val city= City("Tokyo","Joku","Japan",true,
+        500000, listOf("sdnsk","kzjxs"))
 
-        db.collection("cities").document("BPL").set(city)
+        db.collection("cities").add(city)
+
+
+        val idrref= db.collection("cities").document("IDR")
+
+        idrref.update("name","IndoraNagar")
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {
+
+            }
 
 
 
