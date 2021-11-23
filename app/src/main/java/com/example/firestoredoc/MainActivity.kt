@@ -16,7 +16,54 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val username="apurvaone"
+        val city= City("Bhopal","MP","India",true,
+        500000, listOf("MP nagar","Avadhpuri"))
+
+        db.collection("cities").document("BPL").set(city)
+
+
+
+       /* val docData= hashMapOf(
+
+                "stringEx" to "THis is A sTrInG",
+            "booleanEx" to true,
+            "numberEx" to 3.14232323,
+            "dataEx" to arrayListOf(1,2,3),
+            "nullEx" to null
+        )
+
+        val nestedData= hashMapOf(  //objectEx
+            "a" to 5 ,
+            "b" to true
+        )
+
+        docData["objectEx"]= nestedData
+
+        db.collection("dataEx").document("one")
+            .set(docData)
+            .addOnSuccessListener {  }
+            .addOnFailureListener {  }*/
+
+//        val city= hashMapOf(
+//            "name" to "Indore",
+//        "state" to "MP",
+//        "country" to "india"
+//        )
+//
+//        db.collection("cities")
+//            .document("IDR")
+//            .set(city)
+//            .addOnSuccessListener {
+//                Log.d(TAG,"Doc wriiten")
+//            }
+//            .addOnFailureListener {
+//                e->
+//                Log.w(TAG,"Error",e)
+//            }
+
+
+
+       /* val username="apurvaone"
 
         val user= hashMapOf(
             "first" to "Apoorv",
@@ -53,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         meesageRef1.set(msg1)
 
-
+*/
 //        val user= hashMapOf("first" to "Apurva",
 //        "last" to "Shukla",
 //        "dob" to "2001")
