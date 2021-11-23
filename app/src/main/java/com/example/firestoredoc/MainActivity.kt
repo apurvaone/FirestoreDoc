@@ -17,7 +17,33 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val city= City("Tokyo","Joku","Japan",true,
+        val washingtonRef = db.collection("cities").document("BPL")
+
+// Atomically add a new region to the "regions" array field.
+        washingtonRef.update("regions", FieldValue.arrayUnion("greater_bhawarkuan"))
+
+// Atomically remove a region from the "regions" array field.
+        washingtonRef.update("regions", FieldValue.arrayRemove("MP nagar"))
+
+
+       /* db.collection("users").document("apurvaone").update(
+            mapOf("first" to "Sir Apurva",
+            "last" to "Shukla Ji"
+            )
+
+        )
+
+        val nameref= db.collection("users").document("apurvaone")
+
+        val updates = hashMapOf<String, Any>(
+            "timestamp" to FieldValue.serverTimestamp()
+        )
+
+        nameref.update(updates)*/
+
+
+
+    /*    val city= City("Tokyo","Joku","Japan",true,
         500000, listOf("sdnsk","kzjxs"))
 
         db.collection("cities").add(city)
@@ -37,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             "timestamp" to FieldValue.serverTimestamp()
         )
 
-        idrref.update(updates).addOnCompleteListener {  }
+        idrref.update(updates).addOnCompleteListener {  }*/
 
 
 
