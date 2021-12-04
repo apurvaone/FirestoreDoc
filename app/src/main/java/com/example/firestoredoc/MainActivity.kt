@@ -17,9 +17,61 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val washingtonRef = db.collection("cities").document("BPL")
+        val docref= db.collection("cities").document("SDl")
+       val updates= hashMapOf<String,Any>(
+           "updated via transaction" to FieldValue.serverTimestamp()
+       )
+        db.runTransaction {
+            val snapshot= it.get(docref)
 
-        washingtonRef.update("population",FieldValue.increment(199999))
+            val new_population= snapshot.getDouble("population")!! + 1
+
+            it.update(docref,"population",new_population)
+            it.update(docref,updates)
+
+
+
+            null
+        }
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {
+
+            }
+
+
+
+
+//
+//       val city5= City("Shahdol","Madhya Pradesh","India",false,100000, listOf("aitajhar","jodhpur","padmania","shahdol"))
+//        db.collection("cities").document("SDl").set(city5)
+
+//        val docref= db.collection("cities").document("SDl")
+//        val updates= hashMapOf<String,Any>(
+//            "timestamp" to FieldValue.serverTimestamp())
+//        docref.update("population",FieldValue.increment(1345))
+//            .addOnSuccessListener {
+//docref.update(updates).addOnCompleteListener {  }
+//            }
+//            .addOnFailureListener {
+//
+//            }
+
+
+
+
+
+
+
+
+
+
+
+
+//        val washingtonRef = db.collection("cities").document("BPL")
+//
+//        washingtonRef.update("population",FieldValue.increment(199999))
 
 /*
 // Atomically add a new region to the "regions" array field.
