@@ -18,7 +18,15 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val docref= db.collection("cities").document("SDl")
+        db.collection("cities").document("BPL")
+            .delete()
+            .addOnSuccessListener {  }
+            .addOnFailureListener {  }
+
+
+
+
+      /*  val docref= db.collection("cities").document("SDl")
 
         db.runTransaction {
             val snapshot = it.get(docref)
@@ -41,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.w(TAG,"Transaction Failure ",it)
 
-            }
+            }*/
 
      /*   val docref= db.collection("cities").document("SDl")            // Transaction example
        val updates= hashMapOf<String,Any>(
