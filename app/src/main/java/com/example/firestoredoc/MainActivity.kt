@@ -18,11 +18,27 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        db.collection("cities").document("BPL")
+        val docref= db.collection("cities").document("SDl")
+
+
+        val updates= hashMapOf<String,Any>(
+            "isCapital" to FieldValue.delete()
+        )
+
+        docref.update(updates).addOnCompleteListener {
+
+        }
+
+
+
+
+
+
+    /*    db.collection("cities").document("BPL")   //deletes a document, wrong message in commit message
             .delete()
             .addOnSuccessListener {  }
             .addOnFailureListener {  }
-
+*/
 
 
 
