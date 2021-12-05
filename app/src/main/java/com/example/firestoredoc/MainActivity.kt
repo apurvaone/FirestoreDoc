@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -18,6 +19,31 @@ class MainActivity : AppCompatActivity() {
         val db = Firebase.firestore
 
         val docref= db.collection("cities").document("SDl")
+
+        db.runTransaction {
+            val snapshot = it.get(docref)
+            val newPopulation= snapshot.getDouble("population")!! + 1
+
+            if (newPopulation<1000000)
+            {
+                    it.update(docref,"population",newPopulation)
+
+            }else
+            {
+                throw FirebaseFirestoreException("Population too high",FirebaseFirestoreException.Code.ABORTED)
+            }
+
+        }
+            .addOnSuccessListener {
+                Log.d(TAG,"Transaction Sucess : $it")
+
+            }
+            .addOnFailureListener {
+                Log.w(TAG,"Transaction Failure ",it)
+
+            }
+
+     /*   val docref= db.collection("cities").document("SDl")            // Transaction example
        val updates= hashMapOf<String,Any>(
            "updated via transaction" to FieldValue.serverTimestamp()
        )
@@ -38,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
 
-            }
+            }*/
 
 
 
