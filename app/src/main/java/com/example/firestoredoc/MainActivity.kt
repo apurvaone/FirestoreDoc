@@ -27,15 +27,16 @@ class MainActivity : AppCompatActivity() {
 
         val citiesref= db.collection("cities")
 
-        val query= citiesref.whereEqualTo("name", "Shahdol")
+        val query= citiesref.orderBy("name")
 
         query.get()
             .addOnSuccessListener {
                 for( i in it)
                 {
-                    textView.text= textView.text.toString() + i.id + "  " + i.data +"          "
+                    textView.text= textView.text.toString() + i.id + "  " + i.data +"     "
                 }
             }
+
 
 
         /*val str:String= ""
