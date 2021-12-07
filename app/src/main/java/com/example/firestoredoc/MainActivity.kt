@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val citiesref= db.collection("cities")
 
-        val query= citiesref.orderBy("name")
+        val query= citiesref.orderBy("name").limit(3)
 
         query.get()
             .addOnSuccessListener {
