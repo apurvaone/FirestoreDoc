@@ -18,7 +18,24 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val docref= db.collection("cities").document("SDl")
+        val docref= db.collection("rooms").document("roomA").collection("messages").document("message1")
+
+        val updates= hashMapOf<String,Any>("msg"
+        to FieldValue.delete())
+
+        docref.update(updates).addOnSuccessListener {
+
+        }
+            .addOnFailureListener {
+                Toast.makeText(this,"Deletion failed",Toast.LENGTH_LONG).show()
+            }
+
+
+
+
+
+
+        /*val docref= db.collection("cities").document("")
 
 
         val updates= hashMapOf<String,Any>(
@@ -27,7 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         docref.update(updates).addOnCompleteListener {
 
-        }
+        }*/
+
+
 
 
 
