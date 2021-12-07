@@ -18,7 +18,40 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        val docref= db.collection("rooms").document("roomA").collection("messages").document("message1")
+        val city1= hashMapOf(
+            "name" to "Jabalpur",
+            "state" to "Madhya Pradesh",
+            "country" to "India",
+            "population" to 800000,
+            "isCapital" to false,
+            "regions" to listOf("madan mahal", "main market", "mg road")
+        )
+
+        val city2= hashMapOf(
+            "name" to "Katni",
+            "state" to "Madhya Pradesh",
+            "country" to "India",
+            "population" to "1000000",
+            "isCapital" to false,
+            "regions" to listOf("kala bazar", "gandhi chauraha")
+        )
+
+        db.collection("cities").document("JBP").set(city1)
+        db.collection("cities").document("KTN").set(city2)
+
+        val updates = hashMapOf<String,Any>("City added in " to FieldValue.serverTimestamp())
+        db.collection("cities").document("JBP").update(updates)
+
+        db.collection("cities").document("KTN").update(updates)
+
+
+
+
+
+
+
+
+       /* val docref= db.collection("rooms").document("roomA").collection("messages").document("message1")
 
         val updates= hashMapOf<String,Any>("msg"
         to FieldValue.delete())
@@ -28,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
             .addOnFailureListener {
                 Toast.makeText(this,"Deletion failed",Toast.LENGTH_LONG).show()
-            }
+            }*/
 
 
 
