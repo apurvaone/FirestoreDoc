@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -24,9 +25,32 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
 
-        //Get a document
+
+        /*The previous example retrieved the contents of the document as a map, but in some languages
+        it's often more convenient to use a custom object type. In Add Data, you defined a City class that you used to define each city.
+        You can turn your document back into a City object:*/
 
         val docref = db.collection("cities").document("KTN")
+
+        docref.get().addOnSuccessListener {
+            val city:City = it.toObject(City?)         // constructor error
+            if (it != null) {
+                {
+                    textView.text= city.name
+                }
+
+            }
+        }
+    }
+
+
+
+
+
+
+        //Get a document
+
+     /*   val docref = db.collection("cities").document("KTN")
        val source= Source.CACHE //Source.Client , Source.Server and Source.Cache               //offline support
 
         docref.get(source)
@@ -40,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 {
                     textView.text= "Unable to fetch data"
                 }
-            }
+            }*/
 
 
        /* val city1= hashMapOf(
@@ -375,6 +399,6 @@ class MainActivity : AppCompatActivity() {
 //            .addOnFailureListener{
 //                Log.w(TAG,"Error getting documents")
 //            }
-            }
+
 
     }
