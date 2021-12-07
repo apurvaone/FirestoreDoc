@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -26,8 +27,9 @@ class MainActivity : AppCompatActivity() {
         //Get a document
 
         val docref = db.collection("cities").document("KTN")
+       val source= Source.CACHE //Source.Client , Source.Server and Source.Cache               //offline support
 
-        docref.get()
+        docref.get(source)
             .addOnSuccessListener {
                 if (it!= null)
                 {
