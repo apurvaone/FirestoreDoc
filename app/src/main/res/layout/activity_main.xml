@@ -11,7 +11,7 @@
         android:layout_width="360dp"
         android:layout_height="653dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
-        android:text="Hello World!"
+        android:text=""
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

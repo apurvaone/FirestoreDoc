@@ -24,13 +24,27 @@ class MainActivity : AppCompatActivity() {
 
 
         val db = Firebase.firestore
+        val str:String= ""
+        val docref = db.collection("cities")
+            .get()
+            .addOnSuccessListener {
+                for ( i in it)
+                {
+                    textView.text = textView.text.toString() + i.data
+                }
+
+
+            }
+            .addOnCanceledListener {
+
+            }
 
 
         /*The previous example retrieved the contents of the document as a map, but in some languages
         it's often more convenient to use a custom object type. In Add Data, you defined a City class that you used to define each city.
         You can turn your document back into a City object:*/
 
-        val docref = db.collection("cities").document("KTN")
+       /* val docref = db.collection("cities").document("KTN")
 
         docref.get().addOnSuccessListener {
             val city:City = it.toObject(City?)         // constructor error
@@ -40,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-        }
+        }*/
     }
 
 
