@@ -24,7 +24,21 @@ class MainActivity : AppCompatActivity() {
 
 
         val db = Firebase.firestore
-        val str:String= ""
+
+        val citiesref= db.collection("cities")
+
+        val query= citiesref.whereEqualTo("name", "Shahdol")
+
+        query.get()
+            .addOnSuccessListener {
+                for( i in it)
+                {
+                    textView.text= textView.text.toString() + i.id + "  " + i.data +"          "
+                }
+            }
+
+
+        /*val str:String= ""
         val docref = db.collection("cities")
             .whereEqualTo("isCapital",true)
             .get()
@@ -40,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-
+*/
         /*The previous example retrieved the contents of the document as a map, but in some languages
         it's often more convenient to use a custom object type. In Add Data, you defined a City class that you used to define each city.
         You can turn your document back into a City object:*/
