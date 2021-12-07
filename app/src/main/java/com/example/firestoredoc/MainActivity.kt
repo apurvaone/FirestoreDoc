@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val db = Firebase.firestore
         val str:String= ""
         val docref = db.collection("cities")
+            .whereEqualTo("isCapital",true)
             .get()
             .addOnSuccessListener {
                 for ( i in it)
