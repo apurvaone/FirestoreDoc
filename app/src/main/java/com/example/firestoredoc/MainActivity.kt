@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -11,14 +12,36 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
+    lateinit var textView:TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        textView= findViewById(R.id.datagetter)
+
 
         val db = Firebase.firestore
 
-        val city1= hashMapOf(
+        //Get a document
+
+        val docref = db.collection("cities").document("KTN")
+
+        docref.get()
+            .addOnSuccessListener {
+                if (it!= null)
+                {
+                        textView.text= (it.data).toString()
+
+                }
+                else
+                {
+                    textView.text= "Unable to fetch data"
+                }
+            }
+
+
+       /* val city1= hashMapOf(
             "name" to "Jabalpur",
             "state" to "Madhya Pradesh",
             "country" to "India",
@@ -43,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         db.collection("cities").document("JBP").update(updates)
 
         db.collection("cities").document("KTN").update(updates)
+*/
+
 
 
 
